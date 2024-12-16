@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "6e849453-72f3-40fc-97bc-21bae0e2ff2a",
+		"name": "GraphQL API Collection",
+		"description": "GraphQL API requests for Query, Mutation, and Subscription.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16649709",
+		"_collection_link": "https://orange-rocket-618735-1.postman.co/workspace/My-Workspace~601e96b6-7f99-42f5-817d-94e69b661b02/collection/16649709-6e849453-72f3-40fc-97bc-21bae0e2ff2a?action=share&source=collection_link&creator=16649709"
+	},
+	"item": [
+		{
+			"name": "Add Customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation { addCustomer(id: 3, name: \\\"Alice\\\", address: \\\"Germany\\\", productIds: [1, 2]) { id name address products { id name price } } }\"\n}\n"
+				},
+				"url": {
+					"raw": "https://localhost:7226/graphql",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation { addProduct(id: 5, name: \\\"TLS Tinlinn\\\", price: 80) { id name price } }\"\n}\n"
+				},
+				"url": {
+					"raw": "https://localhost:7226/graphql",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Customers and Products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"query { customers(top: 5) { id name address city products { id name price } } }\"\n}\n"
+				},
+				"url": {
+					"raw": "https://localhost:7226/graphql",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription on Product Added",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"subscription { onProductAdded { id name price } }\"\n}\n"
+				},
+				"url": {
+					"raw": "https://localhost:7226/graphql",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7226",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
